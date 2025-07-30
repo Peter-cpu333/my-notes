@@ -36,3 +36,6 @@ backend/venv.bak/
 # Content directories - exclude from git to avoid conflicts
 /docs/
 /blog/
+.env
+backend/.env
+*.env

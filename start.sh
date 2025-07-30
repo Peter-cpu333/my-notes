@@ -6,6 +6,13 @@ echo "🚀 启动智能网站服务..."
 
 # 设置环境变量
 echo "🔑 设置环境变量..."
+# 从 .env 文件加载环境变量
+if [ -f .env ]; then
+    export $(cat .env | xargs)
+    echo "✅ 环境变量从 .env 文件加载完成"
+else
+    echo "⚠️  未找到 .env 文件，请确保已创建"
+fi
 export TAVILY_API_KEY="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"
 export DASHSCOPE_API_KEY="sk-f434639a7e1345ed99c660461d92389d"
 echo "✅ 环境变量设置完成"

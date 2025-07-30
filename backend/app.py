@@ -15,14 +15,19 @@ from langchain.schema import HumanMessage
 from langgraph.prebuilt import create_react_agent
 from langchain_community.chat_models.tongyi import ChatTongyi
 from langgraph.checkpoint.memory import MemorySaver
+import os
+from dotenv import load_dotenv
 
 
 
 
+
+# 加载环境变量
+load_dotenv()
 
 # 初始化模型
-llm = ChatTongyi(api_key="sk-f434639a7e1345ed99c660461d92389d", model_name="qwen-max")
-tavily_client = TavilyClient(api_key="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")
+llm = ChatTongyi(api_key=os.getenv("DASHSCOPE_API_KEY"), model_name="qwen-max")
+tavily_client = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
 
 @tool
 def read_doc_file(file_path: str):
